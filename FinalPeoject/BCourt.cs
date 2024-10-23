@@ -31,7 +31,28 @@ namespace FinalPeoject
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            BForm form = new BForm();
+            form.Show();
+            this.Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            BForm2 form = new BForm2();
+            form.Show();
+            this.Hide();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form3 form = new Form3();
+            form.Show();
+            this.Hide();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

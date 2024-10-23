@@ -7,38 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data;
 using MySql.Data.MySqlClient;
 
 namespace FinalPeoject
 {
-    public partial class BForm : Form
+    public partial class Form3 : Form
     {
         private MySqlConnection koneksi;
         private MySqlDataAdapter adapter;
         private MySqlCommand perintah;
         private DataSet ds = new DataSet();
         private string alamat, query;
-
-        public BForm()
+        public Form3()
         {
             alamat = "server=localhost; database=db_playpad; username=root; password=;";
             koneksi = new MySqlConnection(alamat);
             InitializeComponent();
-        }
-
-        private void BForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -48,12 +33,59 @@ namespace FinalPeoject
             this.Hide();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtname.Text != "" && txttelp.Text != "" && txttanggal.Text != "" && CBmulai.Text != "" && CBselesai.Text != "")
+                {
+
+                    query = string.Format("insert into lapangan3  values ('{0}','{1}','{2}','{3}','{4}');", txtname.Text, txttelp.Text, txttanggal.Text, CBmulai.Text, CBselesai.Text);
+
+
+                    koneksi.Open();
+                    perintah = new MySqlCommand(query, koneksi);
+                    adapter = new MySqlDataAdapter(perintah);
+                    int res = perintah.ExecuteNonQuery();
+                    koneksi.Close();
+                    if (res == 1)
+                    {
+                        MessageBox.Show("Insert Data Suksess ...");
+                  
+                
+                    }
+                    else
+                    {
+                        MessageBox.Show("Gagal inser Data . . . ");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Data Tidak lengkap !!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtname_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
                 koneksi.Open();
-                query = string.Format("select *  from lapangan1");
+                query = string.Format("select * lapangan3");
                 perintah = new MySqlCommand(query, koneksi);
                 adapter = new MySqlDataAdapter(perintah);
                 perintah.ExecuteNonQuery();
@@ -80,39 +112,9 @@ namespace FinalPeoject
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                if (txtname.Text != "" && txttelp.Text != "" && txttanggal.Text != "" && CBmulai.Text != "" && CBselesai.Text != "")
-                {
-                    query = string.Format("INSERT INTO lapangan1 (nama, no_tlp, tanggal, jam_mulai, jam_selesai) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}');",
-                      txtname.Text, txttelp.Text, txttanggal.Text, CBmulai.Text, CBselesai.Text);
 
-                    koneksi.Open();
-                    perintah = new MySqlCommand(query, koneksi);
-                    int res = perintah.ExecuteNonQuery();
-                    koneksi.Close();
-
-                    if (res == 1)
-                    {
-                        MessageBox.Show("Insert Data Sukses ...");
-                        BForm_Load(null, null);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Gagal Insert Data...");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Data Tidak Lengkap!");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
         }
     }
 }

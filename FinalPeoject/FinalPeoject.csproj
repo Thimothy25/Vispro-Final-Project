@@ -33,11 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data, Version=8.0.29.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data.EntityFramework, Version=8.0.29.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="MySql.Web, Version=8.0.29.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,6 +66,30 @@
     </Compile>
     <Compile Include="BForm1.Designer.cs">
       <DependentUpon>BForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BForm2.Designer.cs">
+      <DependentUpon>BForm2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BForm3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BForm3.Designer.cs">
+      <DependentUpon>BForm3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrystalReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormBookingCR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBookingCR.Designer.cs">
+      <DependentUpon>FormBookingCR.cs</DependentUpon>
     </Compile>
     <Compile Include="LPage.cs">
       <SubType>Form</SubType>
@@ -85,6 +115,12 @@
     <Compile Include="BHistory.Designer.cs">
       <DependentUpon>BHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="MForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MForm.Designer.cs">
+      <DependentUpon>MForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="About.resx">
@@ -93,8 +129,21 @@
     <EmbeddedResource Include="BForm1.resx">
       <DependentUpon>BForm1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BForm2.resx">
+      <DependentUpon>BForm2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BForm3.resx">
+      <DependentUpon>BForm3.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BHistory.resx">
       <DependentUpon>BHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormBookingCR.resx">
+      <DependentUpon>FormBookingCR.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LPage.resx">
       <DependentUpon>LPage.cs</DependentUpon>
@@ -104,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BCourt.resx">
       <DependentUpon>BCourt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MForm.resx">
+      <DependentUpon>MForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -169,6 +221,39 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\BdCord.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lap1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lap2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lap3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\histo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\his.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lapp1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bcord.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lapp2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lapp3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\about.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

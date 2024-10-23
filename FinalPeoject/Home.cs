@@ -65,6 +65,13 @@ namespace FinalPeoject
         {
 
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            MForm form = new MForm();
+            form.Show();
+            this.Hide();
+        }
     }
  
     

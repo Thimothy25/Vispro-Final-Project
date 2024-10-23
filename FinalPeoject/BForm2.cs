@@ -10,17 +10,17 @@ using System.Windows.Forms;
 
 namespace FinalPeoject
 {
-    public partial class About : Form
+    public partial class BForm2 : Form
     {
-        public About()
+        public BForm2()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
-            Home form = new Home();
-            form.Show();
+            BCourt frmMain = new BCourt();
+            frmMain.Show();
             this.Hide();
         }
     }

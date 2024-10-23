@@ -10,18 +10,16 @@ using System.Windows.Forms;
 
 namespace FinalPeoject
 {
-    public partial class About : Form
+    public partial class FormBookingCR : Form
     {
-        public About()
+        public FormBookingCR()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void crystalReportViewer1_Load(object sender, EventArgs e)
         {
-            Home form = new Home();
-            form.Show();
-            this.Hide();
+
         }
     }
 }
