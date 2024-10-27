@@ -116,6 +116,12 @@
     <Compile Include="BHistory.Designer.cs">
       <DependentUpon>BHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="MANAGEFORM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MANAGEFORM.Designer.cs">
+      <DependentUpon>MANAGEFORM.cs</DependentUpon>
+    </Compile>
     <Compile Include="MForm.cs">
       <SubType>Form</SubType>
     </Compile>
