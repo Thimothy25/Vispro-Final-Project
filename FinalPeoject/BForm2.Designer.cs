@@ -30,13 +30,15 @@
         {
             this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtname = new System.Windows.Forms.TextBox();
+            this.CBmulai = new System.Windows.Forms.ComboBox();
+            this.CBselesai = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.txttanggal = new System.Windows.Forms.DateTimePicker();
+            this.txttelp = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button4
@@ -63,20 +65,22 @@
             this.button1.TabIndex = 8;
             this.button1.Text = "Submit";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // txtname
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(690, 224);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(372, 22);
-            this.textBox1.TabIndex = 9;
+            this.txtname.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtname.Location = new System.Drawing.Point(690, 224);
+            this.txtname.Name = "txtname";
+            this.txtname.Size = new System.Drawing.Size(372, 22);
+            this.txtname.TabIndex = 9;
+            this.txtname.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // comboBox1
+            // CBmulai
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.CBmulai.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CBmulai.FormattingEnabled = true;
+            this.CBmulai.Items.AddRange(new object[] {
             "08:00",
             "09:00",
             "10:00",
@@ -89,16 +93,16 @@
             "17:00",
             "18:00",
             "19:00"});
-            this.comboBox1.Location = new System.Drawing.Point(533, 414);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(125, 23);
-            this.comboBox1.TabIndex = 10;
+            this.CBmulai.Location = new System.Drawing.Point(533, 414);
+            this.CBmulai.Name = "CBmulai";
+            this.CBmulai.Size = new System.Drawing.Size(125, 23);
+            this.CBmulai.TabIndex = 10;
             // 
-            // comboBox2
+            // CBselesai
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.CBselesai.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CBselesai.FormattingEnabled = true;
+            this.CBselesai.Items.AddRange(new object[] {
             "08:00",
             "09:00",
             "10:00",
@@ -111,26 +115,10 @@
             "17:00",
             "18:00",
             "19:00"});
-            this.comboBox2.Location = new System.Drawing.Point(758, 414);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(125, 23);
-            this.comboBox2.TabIndex = 11;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(690, 275);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(372, 22);
-            this.textBox2.TabIndex = 12;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(690, 327);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(372, 22);
-            this.textBox3.TabIndex = 13;
+            this.CBselesai.Location = new System.Drawing.Point(758, 414);
+            this.CBselesai.Name = "CBselesai";
+            this.CBselesai.Size = new System.Drawing.Size(125, 23);
+            this.CBselesai.TabIndex = 11;
             // 
             // pictureBox1
             // 
@@ -142,23 +130,50 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(533, 453);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(470, 166);
+            this.dataGridView1.TabIndex = 14;
+            // 
+            // txttanggal
+            // 
+            this.txttanggal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttanggal.Location = new System.Drawing.Point(690, 327);
+            this.txttanggal.Name = "txttanggal";
+            this.txttanggal.Size = new System.Drawing.Size(372, 22);
+            this.txttanggal.TabIndex = 15;
+            // 
+            // txttelp
+            // 
+            this.txttelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttelp.Location = new System.Drawing.Point(690, 275);
+            this.txttelp.Name = "txttelp";
+            this.txttelp.Size = new System.Drawing.Size(372, 22);
+            this.txttelp.TabIndex = 12;
+            // 
             // BForm2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txttanggal);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.txttelp);
+            this.Controls.Add(this.CBselesai);
+            this.Controls.Add(this.CBmulai);
+            this.Controls.Add(this.txtname);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.pictureBox1);
             this.Name = "BForm2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BForm2";
+            this.Load += new System.EventHandler(this.BForm2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,10 +184,11 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtname;
+        private System.Windows.Forms.ComboBox CBmulai;
+        private System.Windows.Forms.ComboBox CBselesai;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DateTimePicker txttanggal;
+        private System.Windows.Forms.TextBox txttelp;
     }
 }

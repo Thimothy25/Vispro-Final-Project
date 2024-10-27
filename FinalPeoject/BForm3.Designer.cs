@@ -32,11 +32,11 @@
             this.button1 = new System.Windows.Forms.Button();
             this.txtname = new System.Windows.Forms.TextBox();
             this.txttelp = new System.Windows.Forms.TextBox();
-            this.txttanggal = new System.Windows.Forms.TextBox();
             this.CBmulai = new System.Windows.Forms.ComboBox();
             this.CBselesai = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.txttanggal = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -85,14 +85,6 @@
             this.txttelp.Size = new System.Drawing.Size(372, 22);
             this.txttelp.TabIndex = 11;
             this.txttelp.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            // 
-            // txttanggal
-            // 
-            this.txttanggal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttanggal.Location = new System.Drawing.Point(689, 327);
-            this.txttanggal.Name = "txttanggal";
-            this.txttanggal.Size = new System.Drawing.Size(372, 22);
-            this.txttanggal.TabIndex = 12;
             // 
             // CBmulai
             // 
@@ -158,15 +150,23 @@
             this.dataGridView1.TabIndex = 15;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // txttanggal
+            // 
+            this.txttanggal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttanggal.Location = new System.Drawing.Point(689, 327);
+            this.txttanggal.Name = "txttanggal";
+            this.txttanggal.Size = new System.Drawing.Size(372, 22);
+            this.txttanggal.TabIndex = 16;
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.txttanggal);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.CBselesai);
             this.Controls.Add(this.CBmulai);
-            this.Controls.Add(this.txttanggal);
             this.Controls.Add(this.txttelp);
             this.Controls.Add(this.txtname);
             this.Controls.Add(this.button1);
@@ -174,6 +174,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "Form3";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.Form3_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -188,9 +189,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox txtname;
         private System.Windows.Forms.TextBox txttelp;
-        private System.Windows.Forms.TextBox txttanggal;
         private System.Windows.Forms.ComboBox CBmulai;
         private System.Windows.Forms.ComboBox CBselesai;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DateTimePicker txttanggal;
     }
 }

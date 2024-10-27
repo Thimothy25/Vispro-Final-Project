@@ -40,7 +40,7 @@ namespace FinalPeoject
                 if (txtname.Text != "" && txttelp.Text != "" && txttanggal.Text != "" && CBmulai.Text != "" && CBselesai.Text != "")
                 {
 
-                    query = string.Format("insert into lapangan3  values ('{0}','{1}','{2}','{3}','{4}');", txtname.Text, txttelp.Text, txttanggal.Text, CBmulai.Text, CBselesai.Text);
+                    query = string.Format("INSERT INTO lapangan3 (nama, no_tlp, tanggal, jam_mulai, jam_selesai) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}');", txtname.Text, txttelp.Text, txttanggal.Text, CBmulai.Text, CBselesai.Text);
 
 
                     koneksi.Open();
@@ -51,6 +51,7 @@ namespace FinalPeoject
                     if (res == 1)
                     {
                         MessageBox.Show("Insert Data Suksess ...");
+                        Form3_Load(null, null);
                   
                 
                     }
@@ -82,10 +83,15 @@ namespace FinalPeoject
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+           
+        }
+
+        private void Form3_Load(object sender, EventArgs e)
+        {
             try
             {
                 koneksi.Open();
-                query = string.Format("select * lapangan3");
+                query = string.Format("select * from lapangan3");
                 perintah = new MySqlCommand(query, koneksi);
                 adapter = new MySqlDataAdapter(perintah);
                 perintah.ExecuteNonQuery();

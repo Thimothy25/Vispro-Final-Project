@@ -26,29 +26,8 @@ namespace FinalPeoject
             InitializeComponent();
         }
 
+
         private void BForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            BCourt frmMain = new BCourt();
-            frmMain.Show();
-            this.Hide();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -78,6 +57,68 @@ namespace FinalPeoject
             {
                 MessageBox.Show(ex.ToString());
             }
+
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            BCourt frmMain = new BCourt();
+            frmMain.Show();
+            this.Hide();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+        }
+
+        private void BForm_Load_1(object sender, EventArgs e)
+        {
+            try
+            {
+                koneksi.Open();
+                query = string.Format("select *  from lapangan1");
+                perintah = new MySqlCommand(query, koneksi);
+                adapter = new MySqlDataAdapter(perintah);
+                perintah.ExecuteNonQuery();
+                ds.Clear();
+                adapter.Fill(ds);
+                koneksi.Close();
+                dataGridView1.DataSource = ds.Tables[0];
+                dataGridView1.Columns[0].Width = 100;
+                dataGridView1.Columns[0].HeaderText = "ID Booking";
+                dataGridView1.Columns[1].Width = 150;
+                dataGridView1.Columns[1].HeaderText = "Nama";
+                dataGridView1.Columns[2].Width = 120;
+                dataGridView1.Columns[2].HeaderText = "no telp";
+                dataGridView1.Columns[3].Width = 120;
+                dataGridView1.Columns[3].HeaderText = "tanggal";
+                dataGridView1.Columns[4].Width = 120;
+                dataGridView1.Columns[4].HeaderText = "Mulai";
+                dataGridView1.Columns[5].Width = 120;
+                dataGridView1.Columns[5].HeaderText = "Selesai";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -86,8 +127,7 @@ namespace FinalPeoject
             {
                 if (txtname.Text != "" && txttelp.Text != "" && txttanggal.Text != "" && CBmulai.Text != "" && CBselesai.Text != "")
                 {
-                    query = string.Format("INSERT INTO lapangan1 (nama, no_tlp, tanggal, jam_mulai, jam_selesai) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}');",
-                      txtname.Text, txttelp.Text, txttanggal.Text, CBmulai.Text, CBselesai.Text);
+                     query = string.Format("INSERT INTO lapangan1 (nama, no_tlp, tanggal, jam_mulai, jam_selesai) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}');",txtname.Text, txttelp.Text, txttanggal.Text, CBmulai.Text, CBselesai.Text);
 
                     koneksi.Open();
                     perintah = new MySqlCommand(query, koneksi);
