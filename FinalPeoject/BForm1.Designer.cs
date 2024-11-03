@@ -29,7 +29,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.CBmulai = new System.Windows.Forms.ComboBox();
             this.CBselesai = new System.Windows.Forms.ComboBox();
             this.txtname = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
@@ -38,50 +37,16 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txttanggal = new System.Windows.Forms.DateTimePicker();
             this.txttelp = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.CBmulai = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // CBmulai
-            // 
-            this.CBmulai.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CBmulai.FormattingEnabled = true;
-            this.CBmulai.Items.AddRange(new object[] {
-            "08:00",
-            "09:00",
-            "10:00",
-            "11:00",
-            "12:00",
-            "13:00",
-            "14:00",
-            "15:00",
-            "16:00",
-            "17:00",
-            "18:00",
-            "19:00"});
-            this.CBmulai.Location = new System.Drawing.Point(534, 414);
-            this.CBmulai.Name = "CBmulai";
-            this.CBmulai.Size = new System.Drawing.Size(125, 23);
-            this.CBmulai.TabIndex = 1;
             // 
             // CBselesai
             // 
             this.CBselesai.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CBselesai.FormattingEnabled = true;
-            this.CBselesai.Items.AddRange(new object[] {
-            "08:00",
-            "09:00",
-            "10:00",
-            "11:00",
-            "12:00",
-            "13:00",
-            "14:00",
-            "15:00",
-            "16:00",
-            "17:00",
-            "18:00",
-            "19:00",
-            "20:00"});
             this.CBselesai.Location = new System.Drawing.Point(757, 414);
             this.CBselesai.Name = "CBselesai";
             this.CBselesai.Size = new System.Drawing.Size(125, 23);
@@ -159,11 +124,35 @@
             this.txttelp.Size = new System.Drawing.Size(372, 22);
             this.txttelp.TabIndex = 4;
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(186)))), ((int)(((byte)(179)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(1021, 527);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(96, 36);
+            this.button2.TabIndex = 13;
+            this.button2.Text = "Manage";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // CBmulai
+            // 
+            this.CBmulai.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CBmulai.FormattingEnabled = true;
+            this.CBmulai.Location = new System.Drawing.Point(534, 414);
+            this.CBmulai.Name = "CBmulai";
+            this.CBmulai.Size = new System.Drawing.Size(125, 23);
+            this.CBmulai.TabIndex = 1;
+            this.CBmulai.SelectedIndexChanged += new System.EventHandler(this.CBmulai_SelectedIndexChanged);
+            // 
             // BForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.txttanggal);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
@@ -187,7 +176,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ComboBox CBmulai;
         private System.Windows.Forms.ComboBox CBselesai;
         private System.Windows.Forms.TextBox txtname;
         private System.Windows.Forms.Button button4;
@@ -195,5 +183,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DateTimePicker txttanggal;
         private System.Windows.Forms.TextBox txttelp;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox CBmulai;
     }
 }

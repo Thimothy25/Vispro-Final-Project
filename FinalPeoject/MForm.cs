@@ -161,20 +161,6 @@ namespace FinalPeoject
 
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                MForm_Load(null, null);
-                txtUsername.Enabled = true;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             try
@@ -198,13 +184,9 @@ namespace FinalPeoject
                             txtPassword.Text = kolom["password"].ToString();
 
                         }
-                        txtUsername.Enabled = false;
-                        dataGridView1.DataSource = ds.Tables[0];
-                        btnSave.Enabled = false;
-                        btnUpdate.Enabled = true;
-                        btnDelete.Enabled = true;
-                        btnSearch.Enabled = false;
-                        btnClear.Enabled = true;
+                        txtUsername.Enabled = true;
+                     
+                      
                     }
                     else
                     {
@@ -231,6 +213,135 @@ namespace FinalPeoject
             this.Hide();
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Home form = new Home();
+            form.Show();
+            this.Hide();
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtUsername.Text != "" && txtPassword.Text != "")
+                {
+
+                    query = string.Format("insert into tbl_pengguna  values ('{0}','{1}','{2}');", txtID.Text, txtUsername.Text, txtPassword.Text);
+
+
+                    koneksi.Open();
+                    perintah = new MySqlCommand(query, koneksi);
+                    adapter = new MySqlDataAdapter(perintah);
+                    int res = perintah.ExecuteNonQuery();
+                    koneksi.Close();
+                    if (res == 1)
+                    {
+                        MessageBox.Show("Insert Data Suksess ...");
+                        MForm_Load(null, null);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Gagal inser Data . . . ");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Data Tidak lengkap !!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtPassword.Text != "" && txtUsername.Text != "" && txtID.Text != "")
+                {
+
+                    query = string.Format("update tbl_pengguna set password = '{0}', username = '{1}' where id_pengguna = '{2}'", txtPassword.Text, txtUsername.Text, txtID.Text);
+
+
+                    koneksi.Open();
+                    perintah = new MySqlCommand(query, koneksi);
+                    adapter = new MySqlDataAdapter(perintah);
+                    int res = perintah.ExecuteNonQuery();
+                    koneksi.Close();
+                    if (res == 1)
+                    {
+                        MessageBox.Show("Update Data Suksess ...");
+                        MForm_Load(null, null);
+                        txtUsername.Enabled = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Gagal Update Data . . . ");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Data Tidak lengkap !!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtID.Text != "")
+                {
+                    if (MessageBox.Show("Anda Yakin Menghapus Data Ini ??", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        query = string.Format("Delete from tbl_pengguna where id_pengguna = '{0}'", txtID.Text);
+                        ds.Clear();
+                        koneksi.Open();
+                        perintah = new MySqlCommand(query, koneksi);
+                        adapter = new MySqlDataAdapter(perintah);
+                        int res = perintah.ExecuteNonQuery();
+                        koneksi.Close();
+                        if (res == 1)
+                        {
+                            MessageBox.Show("Delete Data Suksess ...");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Gagal Delete data");
+                        }
+                    }
+                    MForm_Load(null, null);
+                    txtUsername.Enabled = true;
+                }
+                else
+                {
+                    MessageBox.Show("Data Yang Anda Pilih Tidak Ada !!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void txtID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void MForm_Load(object sender, EventArgs e)
         {
             try
@@ -243,30 +354,23 @@ namespace FinalPeoject
                 ds.Clear();
                 adapter.Fill(ds);
                 koneksi.Close();
-                dataGridView1.DataSource = ds.Tables[0];
-                dataGridView1.Columns[0].Width = 100;
-                dataGridView1.Columns[0].HeaderText = "ID Pengguna";
-                dataGridView1.Columns[1].Width = 150;
-                dataGridView1.Columns[1].HeaderText = "Username";
-                dataGridView1.Columns[2].Width = 120;
-                dataGridView1.Columns[2].HeaderText = "Password";
 
-
+               
                 txtID.Clear();
                 txtPassword.Clear();
                 txtUsername.Clear();
-                txtID.Focus();
-                btnUpdate.Enabled = false;
-                btnDelete.Enabled = false;
-                btnClear.Enabled = false;
-                btnSave.Enabled = true;
-                btnSearch.Enabled = true;
 
+               
+                txtUsername.Focus();
+
+                txtID.Visible = false; 
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
         }
+
     }
 }
+

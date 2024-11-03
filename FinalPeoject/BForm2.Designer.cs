@@ -33,12 +33,13 @@
             this.txtname = new System.Windows.Forms.TextBox();
             this.CBmulai = new System.Windows.Forms.ComboBox();
             this.CBselesai = new System.Windows.Forms.ComboBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txttanggal = new System.Windows.Forms.DateTimePicker();
             this.txttelp = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // button4
@@ -80,19 +81,6 @@
             // 
             this.CBmulai.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CBmulai.FormattingEnabled = true;
-            this.CBmulai.Items.AddRange(new object[] {
-            "08:00",
-            "09:00",
-            "10:00",
-            "11:00",
-            "12:00",
-            "13:00",
-            "14:00",
-            "15:00",
-            "16:00",
-            "17:00",
-            "18:00",
-            "19:00"});
             this.CBmulai.Location = new System.Drawing.Point(533, 414);
             this.CBmulai.Name = "CBmulai";
             this.CBmulai.Size = new System.Drawing.Size(125, 23);
@@ -102,33 +90,10 @@
             // 
             this.CBselesai.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CBselesai.FormattingEnabled = true;
-            this.CBselesai.Items.AddRange(new object[] {
-            "08:00",
-            "09:00",
-            "10:00",
-            "11:00",
-            "12:00",
-            "13:00",
-            "14:00",
-            "15:00",
-            "16:00",
-            "17:00",
-            "18:00",
-            "19:00"});
             this.CBselesai.Location = new System.Drawing.Point(758, 414);
             this.CBselesai.Name = "CBselesai";
             this.CBselesai.Size = new System.Drawing.Size(125, 23);
             this.CBselesai.TabIndex = 11;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::FinalPeoject.Properties.Resources.lapp3;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1280, 720);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // dataGridView1
             // 
@@ -137,6 +102,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(470, 166);
             this.dataGridView1.TabIndex = 14;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // txttanggal
             // 
@@ -154,11 +120,35 @@
             this.txttelp.Size = new System.Drawing.Size(372, 22);
             this.txttelp.TabIndex = 12;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::FinalPeoject.Properties.Resources.lapp3;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1280, 720);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(186)))), ((int)(((byte)(179)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(1021, 527);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(96, 36);
+            this.button2.TabIndex = 16;
+            this.button2.Text = "Manage";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // BForm2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.txttanggal);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.txttelp);
@@ -172,8 +162,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BForm2";
             this.Load += new System.EventHandler(this.BForm2_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,5 +180,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DateTimePicker txttanggal;
         private System.Windows.Forms.TextBox txttelp;
+        private System.Windows.Forms.Button button2;
     }
 }

@@ -28,6 +28,11 @@ namespace FinalPeoject
             alamat = "server=localhost; database=db_playpad; username=root; password=;";
             koneksi = new MySqlConnection(alamat);
             InitializeComponent();
+            for (int hour = 8; hour <= 21; hour++)
+            {
+                CBmulai.Items.Add($"{hour}:00");
+                CBselesai.Items.Add($"{hour}:00");
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -43,22 +48,74 @@ namespace FinalPeoject
             {
                 if (txtname.Text != "" && txttelp.Text != "" && txttanggal.Text != "" && CBmulai.Text != "" && CBselesai.Text != "")
                 {
-                    query = string.Format("INSERT INTO lapangan2 (nama, no_tlp, tanggal, jam_mulai, jam_selesai) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}');",
-                      txtname.Text, txttelp.Text, txttanggal.Text, CBmulai.Text, CBselesai.Text);
+                    int jamMulai = int.Parse(CBmulai.Text.Split(':')[0]);
+                    int jamSelesai = int.Parse(CBselesai.Text.Split(':')[0]);
 
-                    koneksi.Open();
-                    perintah = new MySqlCommand(query, koneksi);
-                    int res = perintah.ExecuteNonQuery();
-                    koneksi.Close();
+                    // Hitung durasi dalam jam
+                    int durasi = jamSelesai - jamMulai;
 
-                    if (res == 1)
+                    if (durasi > 0)
                     {
-                        MessageBox.Show("Insert Data Sukses ...");
-                        BForm2_Load(null, null);
+                        // Cek apakah sudah ada booking dengan nomor telepon yang sama
+                        string checkPhoneQuery = string.Format("SELECT COUNT(*) FROM lapangan2 WHERE no_tlp = '{0}'", txttelp.Text);
+
+                        koneksi.Open();
+                        perintah = new MySqlCommand(checkPhoneQuery, koneksi);
+                        int phoneCount = Convert.ToInt32(perintah.ExecuteScalar());
+                        koneksi.Close();
+
+                        if (phoneCount > 0)
+                        {
+                            // Jika nomor telepon sudah terdaftar
+                            MessageBox.Show("Nomor telepon sudah terdaftar. Silakan gunakan nomor lain.");
+                        }
+                        else
+                        {
+                            // Cek apakah ada booking dengan tanggal dan waktu yang sama
+                            string checkBookingQuery = string.Format("SELECT COUNT(*) FROM lapangan2 WHERE tanggal = '{0}' " +
+                                "AND ((jam_mulai <= '{1}' AND jam_selesai > '{1}') OR (jam_mulai < '{2}' AND jam_selesai >= '{2}') OR " +
+                                "(jam_mulai >= '{1}' AND jam_selesai <= '{2}'))",
+                                txttanggal.Text, CBmulai.Text, CBselesai.Text);
+
+                            koneksi.Open();
+                            perintah = new MySqlCommand(checkBookingQuery, koneksi);
+                            int bookingCount = Convert.ToInt32(perintah.ExecuteScalar());
+                            koneksi.Close();
+
+                            if (bookingCount > 0)
+                            {
+                                // Jika ada booking dengan tanggal dan jam yang sama
+                                MessageBox.Show("Jam sudah dibooking pada tanggal yang sama.");
+                            }
+                            else
+                            {
+                                // Hitung biaya
+                                int biaya = durasi * 40000;
+
+                                // Insert booking baru ke database
+                                string insertQuery = string.Format("INSERT INTO lapangan2 (nama, no_tlp, tanggal, jam_mulai, jam_selesai, harga) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', {5});",
+                                                                      txtname.Text, txttelp.Text, txttanggal.Text, CBmulai.Text, CBselesai.Text, biaya);
+
+                                koneksi.Open();
+                                perintah = new MySqlCommand(insertQuery, koneksi);
+                                int res = perintah.ExecuteNonQuery();
+                                koneksi.Close();
+
+                                if (res == 1)
+                                {
+                                    MessageBox.Show("Insert Data Sukses ...");
+                                    BForm2_Load(null, null);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Gagal Insert Data...");
+                                }
+                            }
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Gagal Insert Data...");
+                        MessageBox.Show("Waktu selesai harus lebih besar dari waktu mulai.");
                     }
                 }
                 else
@@ -73,6 +130,18 @@ namespace FinalPeoject
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Lap2Mng frmMain = new Lap2Mng();
+            frmMain.Show();
+            this.Hide();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

@@ -92,6 +92,24 @@
     <Compile Include="FormBookingCR.Designer.cs">
       <DependentUpon>FormBookingCR.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lap1Manage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lap1Manage.Designer.cs">
+      <DependentUpon>Lap1Manage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lap2Mng.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lap2Mng.Designer.cs">
+      <DependentUpon>Lap2Mng.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lap3Mng.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lap3Mng.Designer.cs">
+      <DependentUpon>Lap3Mng.cs</DependentUpon>
+    </Compile>
     <Compile Include="LPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +169,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormBookingCR.resx">
       <DependentUpon>FormBookingCR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lap1Manage.resx">
+      <DependentUpon>Lap1Manage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lap2Mng.resx">
+      <DependentUpon>Lap2Mng.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lap3Mng.resx">
+      <DependentUpon>Lap3Mng.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LPage.resx">
       <DependentUpon>LPage.cs</DependentUpon>
@@ -261,6 +288,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\about.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mpage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\prof.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PlayPad UI.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
