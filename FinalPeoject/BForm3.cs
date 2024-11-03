@@ -89,7 +89,7 @@ namespace FinalPeoject
                                 int biaya = durasi * 40000;
 
                                 // Insert booking baru ke database
-                                string insertQuery = string.Format("INSERT INTO lapangan3 (nama, no_tlp, tanggal, jam_mulai, jam_selesai, harga) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', {5});",
+                                string insertQuery = string.Format("INSERT INTO lapangan3 (nama, no_tlp, tanggal, jam_mulai, jam_selesai, biaya) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', {5});",
                                                                       txtname.Text, txttelp.Text, txttanggal.Text, CBmulai.Text, CBselesai.Text, biaya);
 
                                 koneksi.Open();
@@ -175,6 +175,13 @@ namespace FinalPeoject
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Lap3Mng frmMain = new Lap3Mng();
+            frmMain.Show();
+            this.Hide();
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)

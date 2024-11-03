@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.txtnama = new System.Windows.Forms.TextBox();
+            this.txtname = new System.Windows.Forms.TextBox();
             this.txttelp = new System.Windows.Forms.TextBox();
             this.CBmulai = new System.Windows.Forms.ComboBox();
             this.CBselesai = new System.Windows.Forms.ComboBox();
-            this.txtTanggal = new System.Windows.Forms.DateTimePicker();
+            this.txttanggal = new System.Windows.Forms.DateTimePicker();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txtstatus = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -56,14 +56,14 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // txtnama
+            // txtname
             // 
-            this.txtnama.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnama.Location = new System.Drawing.Point(724, 225);
-            this.txtnama.Name = "txtnama";
-            this.txtnama.Size = new System.Drawing.Size(238, 21);
-            this.txtnama.TabIndex = 3;
-            this.txtnama.TextChanged += new System.EventHandler(this.txtNama_TextChanged);
+            this.txtname.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtname.Location = new System.Drawing.Point(724, 225);
+            this.txtname.Name = "txtname";
+            this.txtname.Size = new System.Drawing.Size(238, 21);
+            this.txtname.TabIndex = 3;
+            this.txtname.TextChanged += new System.EventHandler(this.txtNama_TextChanged);
             // 
             // txttelp
             // 
@@ -120,13 +120,13 @@
             this.CBselesai.TabIndex = 7;
             this.CBselesai.SelectedIndexChanged += new System.EventHandler(this.CBselesai_SelectedIndexChanged);
             // 
-            // txtTanggal
+            // txttanggal
             // 
-            this.txtTanggal.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTanggal.Location = new System.Drawing.Point(724, 327);
-            this.txtTanggal.Name = "txtTanggal";
-            this.txtTanggal.Size = new System.Drawing.Size(238, 20);
-            this.txtTanggal.TabIndex = 9;
+            this.txttanggal.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttanggal.Location = new System.Drawing.Point(724, 327);
+            this.txttanggal.Name = "txttanggal";
+            this.txttanggal.Size = new System.Drawing.Size(238, 20);
+            this.txttanggal.TabIndex = 9;
             // 
             // dataGridView1
             // 
@@ -210,11 +210,11 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.txtstatus);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.txtTanggal);
+            this.Controls.Add(this.txttanggal);
             this.Controls.Add(this.CBselesai);
             this.Controls.Add(this.CBmulai);
             this.Controls.Add(this.txttelp);
-            this.Controls.Add(this.txtnama);
+            this.Controls.Add(this.txtname);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
             this.Name = "Lap1Manage";
@@ -230,11 +230,11 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox txtnama;
+        private System.Windows.Forms.TextBox txtname;
         private System.Windows.Forms.TextBox txttelp;
         private System.Windows.Forms.ComboBox CBmulai;
         private System.Windows.Forms.ComboBox CBselesai;
-        private System.Windows.Forms.DateTimePicker txtTanggal;
+        private System.Windows.Forms.DateTimePicker txttanggal;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox txtstatus;

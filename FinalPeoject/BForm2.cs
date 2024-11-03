@@ -93,7 +93,7 @@ namespace FinalPeoject
                                 int biaya = durasi * 40000;
 
                                 // Insert booking baru ke database
-                                string insertQuery = string.Format("INSERT INTO lapangan2 (nama, no_tlp, tanggal, jam_mulai, jam_selesai, harga) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', {5});",
+                                string insertQuery = string.Format("INSERT INTO lapangan2 (nama, no_tlp, tanggal, jam_mulai, jam_selesai, biaya) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', {5});",
                                                                       txtname.Text, txttelp.Text, txttanggal.Text, CBmulai.Text, CBselesai.Text, biaya);
 
                                 koneksi.Open();

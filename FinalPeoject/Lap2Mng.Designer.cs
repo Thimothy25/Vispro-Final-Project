@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtnama = new System.Windows.Forms.TextBox();
-            this.txttlp = new System.Windows.Forms.TextBox();
+            this.txtname = new System.Windows.Forms.TextBox();
+            this.txttelp = new System.Windows.Forms.TextBox();
             this.txtstatus = new System.Windows.Forms.TextBox();
             this.CBmulai = new System.Windows.Forms.ComboBox();
             this.CBselesai = new System.Windows.Forms.ComboBox();
@@ -40,26 +40,27 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txtIDB = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtnama
+            // txtname
             // 
-            this.txtnama.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnama.Location = new System.Drawing.Point(724, 225);
-            this.txtnama.Name = "txtnama";
-            this.txtnama.Size = new System.Drawing.Size(238, 21);
-            this.txtnama.TabIndex = 4;
-            this.txtnama.TextChanged += new System.EventHandler(this.txtnama_TextChanged);
+            this.txtname.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtname.Location = new System.Drawing.Point(724, 225);
+            this.txtname.Name = "txtname";
+            this.txtname.Size = new System.Drawing.Size(238, 21);
+            this.txtname.TabIndex = 4;
+            this.txtname.TextChanged += new System.EventHandler(this.txtnama_TextChanged);
             // 
-            // txttlp
+            // txttelp
             // 
-            this.txttlp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttlp.Location = new System.Drawing.Point(724, 275);
-            this.txttlp.Name = "txttlp";
-            this.txttlp.Size = new System.Drawing.Size(238, 21);
-            this.txttlp.TabIndex = 5;
+            this.txttelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttelp.Location = new System.Drawing.Point(724, 275);
+            this.txttelp.Name = "txttelp";
+            this.txttelp.Size = new System.Drawing.Size(238, 21);
+            this.txttelp.TabIndex = 5;
             // 
             // txtstatus
             // 
@@ -73,19 +74,6 @@
             // 
             this.CBmulai.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CBmulai.FormattingEnabled = true;
-            this.CBmulai.Items.AddRange(new object[] {
-            "08:00",
-            "09:00",
-            "10:00",
-            "11:00",
-            "12:00",
-            "13:00",
-            "14:00",
-            "15:00",
-            "16:00",
-            "17:00",
-            "18:00",
-            "19:00"});
             this.CBmulai.Location = new System.Drawing.Point(569, 465);
             this.CBmulai.Name = "CBmulai";
             this.CBmulai.Size = new System.Drawing.Size(125, 26);
@@ -95,19 +83,6 @@
             // 
             this.CBselesai.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CBselesai.FormattingEnabled = true;
-            this.CBselesai.Items.AddRange(new object[] {
-            "08:00",
-            "09:00",
-            "10:00",
-            "11:00",
-            "12:00",
-            "13:00",
-            "14:00",
-            "15:00",
-            "16:00",
-            "17:00",
-            "18:00",
-            "19:00"});
             this.CBselesai.Location = new System.Drawing.Point(793, 465);
             this.CBselesai.Name = "CBselesai";
             this.CBselesai.Size = new System.Drawing.Size(125, 26);
@@ -186,11 +161,20 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // txtIDB
+            // 
+            this.txtIDB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIDB.Location = new System.Drawing.Point(724, 198);
+            this.txtIDB.Name = "txtIDB";
+            this.txtIDB.Size = new System.Drawing.Size(238, 21);
+            this.txtIDB.TabIndex = 17;
+            // 
             // Lap2Mng
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.txtIDB);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -200,8 +184,8 @@
             this.Controls.Add(this.CBselesai);
             this.Controls.Add(this.CBmulai);
             this.Controls.Add(this.txtstatus);
-            this.Controls.Add(this.txttlp);
-            this.Controls.Add(this.txtnama);
+            this.Controls.Add(this.txttelp);
+            this.Controls.Add(this.txtname);
             this.Controls.Add(this.pictureBox1);
             this.Name = "Lap2Mng";
             this.Text = "Lap2Mng";
@@ -216,8 +200,8 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox txtnama;
-        private System.Windows.Forms.TextBox txttlp;
+        private System.Windows.Forms.TextBox txtname;
+        private System.Windows.Forms.TextBox txttelp;
         private System.Windows.Forms.TextBox txtstatus;
         private System.Windows.Forms.ComboBox CBmulai;
         private System.Windows.Forms.ComboBox CBselesai;
@@ -227,5 +211,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox txtIDB;
     }
 }

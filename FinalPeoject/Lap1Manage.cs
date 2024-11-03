@@ -92,37 +92,72 @@ namespace FinalPeoject
         {
             try
             {
-                
-                if (!string.IsNullOrEmpty(txtnama.Text) && !string.IsNullOrEmpty(txttelp.Text) && !string.IsNullOrEmpty(txtstatus.Text))
+                if (txtname.Text != "" && txttelp.Text != "" && txttanggal.Text != "" && CBmulai.Text != "" && CBselesai.Text != "")
                 {
-                    
-                    query = string.Format("UPDATE lapangan1 SET nama = '{0}', no_tlp = '{1}', status = '{2}' WHERE nama = '{3}'",
-                                          txtnama.Text, txttelp.Text, txtstatus.Text, txtnama.Text);
+                    int jamMulai = int.Parse(CBmulai.Text.Split(':')[0]);
+                    int jamSelesai = int.Parse(CBselesai.Text.Split(':')[0]);
 
-                    koneksi.Open();
-                    perintah = new MySqlCommand(query, koneksi);
-                    int res = perintah.ExecuteNonQuery();
-                    koneksi.Close();
+                    // Hitung durasi dalam jam
+                    int durasi = jamSelesai - jamMulai;
 
-                    if (res == 1)
+                    if (durasi > 0)
                     {
-                        MessageBox.Show("Update Data Sukses...");
-                        Lap1Manage_Load(null, null); 
+                        // Cek apakah ada booking dengan tanggal dan waktu yang sama
+                        string checkBookingQuery = string.Format("SELECT COUNT(*) FROM lapangan1 WHERE tanggal = '{0}' " +
+                            "AND ((jam_mulai <= '{1}' AND jam_selesai > '{1}') OR (jam_mulai < '{2}' AND jam_selesai >= '{2}') OR " +
+                            "(jam_mulai >= '{1}' AND jam_selesai <= '{2}'))",
+                            txttanggal.Text, CBmulai.Text, CBselesai.Text);
+
+                        koneksi.Open();
+                        perintah = new MySqlCommand(checkBookingQuery, koneksi);
+                        int bookingCount = Convert.ToInt32(perintah.ExecuteScalar());
+                        koneksi.Close();
+
+                        if (bookingCount > 0)
+                        {
+                            // Jika ada booking dengan tanggal dan jam yang sama
+                            MessageBox.Show("Jam sudah dibooking pada tanggal yang sama.");
+                        }
+                        else
+                        {
+                            // Hitung biaya
+                            int biaya = durasi * 40000;
+
+                            // Update booking di database
+                            string updateQuery = string.Format("UPDATE lapangan1 SET nama = '{0}', tanggal = '{1}', jam_mulai = '{2}', jam_selesai = '{3}', biaya = {4} WHERE no_tlp = '{5}';",
+                                                                txtname.Text, txttanggal.Text, CBmulai.Text, CBselesai.Text, biaya, txttelp.Text);
+
+                            koneksi.Open();
+                            perintah = new MySqlCommand(updateQuery, koneksi);
+                            int res = perintah.ExecuteNonQuery();
+                            koneksi.Close();
+
+                            if (res == 1)
+                            {
+                                MessageBox.Show("Update Data Sukses ...");
+                                Lap1Manage_Load(null, null);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Gagal Update Data...");
+                            }
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Data tidak ditemukan atau gagal di-update.");
+                        MessageBox.Show("Waktu selesai harus lebih besar dari waktu mulai.");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Data tidak lengkap! Pastikan Nama, No. Telepon, dan Status diisi.");
+                    MessageBox.Show("Data Tidak Lengkap!");
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+
 
         }
 
@@ -158,7 +193,7 @@ namespace FinalPeoject
                         }
                     }
                     Lap1Manage_Load(null, null);
-                    txtnama.Enabled = true;
+                    txtname.Enabled = true;
                 }
                 else
                 {
@@ -201,10 +236,10 @@ namespace FinalPeoject
             try
             {
                 // Periksa apakah txtNama atau txttelp berisi data
-                if (!string.IsNullOrEmpty(txtnama.Text) || !string.IsNullOrEmpty(txttelp.Text))
+                if (!string.IsNullOrEmpty(txtname.Text) || !string.IsNullOrEmpty(txttelp.Text))
                 {
                     // Query untuk mencari berdasarkan nama atau nomor telepon
-                    query = string.Format("SELECT * FROM lapangan1 WHERE nama = '{0}' OR no_tlp = '{1}'", txtnama.Text, txttelp.Text);
+                    query = string.Format("SELECT * FROM lapangan1 WHERE nama = '{0}' OR no_tlp = '{1}'", txtname.Text, txttelp.Text);
 
                     ds.Clear();
                     koneksi.Open();
@@ -221,11 +256,11 @@ namespace FinalPeoject
                         // Mengambil baris pertama hasil pencarian
                         DataRow kolom = ds.Tables[0].Rows[0];
                         txtIDB.Text = kolom["id_booking"].ToString();  // Mengisi txtIDB dengan id_booking
-                        txtnama.Text = kolom["nama"].ToString();
+                        txtname.Text = kolom["nama"].ToString();
                         txttelp.Text = kolom["no_tlp"].ToString();
                         txtstatus.Text = kolom["status"].ToString();
 
-                        txtnama.Enabled = true;
+                        txtname.Enabled = true;
                     }
                     else
                     {
