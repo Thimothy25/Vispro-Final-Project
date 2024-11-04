@@ -31,8 +31,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.txtname = new System.Windows.Forms.TextBox();
             this.txttelp = new System.Windows.Forms.TextBox();
-            this.CBmulai = new System.Windows.Forms.ComboBox();
-            this.CBselesai = new System.Windows.Forms.ComboBox();
+            this.CBbegin = new System.Windows.Forms.ComboBox();
+            this.CBend = new System.Windows.Forms.ComboBox();
             this.txttanggal = new System.Windows.Forms.DateTimePicker();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txtstatus = new System.Windows.Forms.TextBox();
@@ -73,52 +73,25 @@
             this.txttelp.Size = new System.Drawing.Size(238, 21);
             this.txttelp.TabIndex = 5;
             // 
-            // CBmulai
+            // CBbegin
             // 
-            this.CBmulai.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CBmulai.FormattingEnabled = true;
-            this.CBmulai.Items.AddRange(new object[] {
-            "08:00",
-            "09:00",
-            "10:00",
-            "11:00",
-            "12:00",
-            "13:00",
-            "14:00",
-            "15:00",
-            "16:00",
-            "17:00",
-            "18:00",
-            "19:00"});
-            this.CBmulai.Location = new System.Drawing.Point(569, 465);
-            this.CBmulai.Name = "CBmulai";
-            this.CBmulai.Size = new System.Drawing.Size(125, 26);
-            this.CBmulai.TabIndex = 6;
-            this.CBmulai.SelectedIndexChanged += new System.EventHandler(this.CBmulai_SelectedIndexChanged);
+            this.CBbegin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CBbegin.FormattingEnabled = true;
+            this.CBbegin.Location = new System.Drawing.Point(569, 465);
+            this.CBbegin.Name = "CBbegin";
+            this.CBbegin.Size = new System.Drawing.Size(125, 26);
+            this.CBbegin.TabIndex = 6;
+            this.CBbegin.SelectedIndexChanged += new System.EventHandler(this.CBmulai_SelectedIndexChanged);
             // 
-            // CBselesai
+            // CBend
             // 
-            this.CBselesai.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CBselesai.FormattingEnabled = true;
-            this.CBselesai.Items.AddRange(new object[] {
-            "08:00",
-            "09:00",
-            "10:00",
-            "11:00",
-            "12:00",
-            "13:00",
-            "14:00",
-            "15:00",
-            "16:00",
-            "17:00",
-            "18:00",
-            "19:00",
-            "20:00"});
-            this.CBselesai.Location = new System.Drawing.Point(794, 465);
-            this.CBselesai.Name = "CBselesai";
-            this.CBselesai.Size = new System.Drawing.Size(125, 26);
-            this.CBselesai.TabIndex = 7;
-            this.CBselesai.SelectedIndexChanged += new System.EventHandler(this.CBselesai_SelectedIndexChanged);
+            this.CBend.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CBend.FormattingEnabled = true;
+            this.CBend.Location = new System.Drawing.Point(794, 465);
+            this.CBend.Name = "CBend";
+            this.CBend.Size = new System.Drawing.Size(125, 26);
+            this.CBend.TabIndex = 7;
+            this.CBend.SelectedIndexChanged += new System.EventHandler(this.CBselesai_SelectedIndexChanged);
             // 
             // txttanggal
             // 
@@ -211,8 +184,8 @@
             this.Controls.Add(this.txtstatus);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.txttanggal);
-            this.Controls.Add(this.CBselesai);
-            this.Controls.Add(this.CBmulai);
+            this.Controls.Add(this.CBend);
+            this.Controls.Add(this.CBbegin);
             this.Controls.Add(this.txttelp);
             this.Controls.Add(this.txtname);
             this.Controls.Add(this.button1);
@@ -232,8 +205,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox txtname;
         private System.Windows.Forms.TextBox txttelp;
-        private System.Windows.Forms.ComboBox CBmulai;
-        private System.Windows.Forms.ComboBox CBselesai;
+        private System.Windows.Forms.ComboBox CBbegin;
+        private System.Windows.Forms.ComboBox CBend;
         private System.Windows.Forms.DateTimePicker txttanggal;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.PictureBox pictureBox1;

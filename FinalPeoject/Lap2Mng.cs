@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 using System.Xml.Linq;
 
 namespace FinalPeoject
@@ -99,6 +101,7 @@ namespace FinalPeoject
 
                         // Mengambil baris pertama hasil pencarian
                         DataRow kolom = ds.Tables[0].Rows[0];
+                        txtIDB.Text = kolom["id_booking"].ToString();  // Mengisi txtIDB dengan id_booking
                         txtname.Text = kolom["nama"].ToString();
                         txttelp.Text = kolom["no_tlp"].ToString();
                         txtstatus.Text = kolom["status"].ToString();
@@ -171,8 +174,8 @@ namespace FinalPeoject
                             int biaya = durasi * 40000;
 
                             // Update booking di database
-                            string updateQuery = string.Format("UPDATE lapangan2 SET nama = '{0}', tanggal = '{1}', jam_mulai = '{2}', jam_selesai = '{3}', biaya = {4} WHERE no_tlp = '{5}';",
-                                                                txtname.Text, txttanggal.Text, CBmulai.Text, CBselesai.Text, biaya, txttelp.Text);
+                            string updateQuery = string.Format("UPDATE lapangan2 SET nama = '{0}', tanggal = '{1}', jam_mulai = '{2}', jam_selesai = '{3}', biaya = {4}, no_tlp = {5} WHERE id_booking = '{6}';",
+                                                                txtname.Text, txttanggal.Text, CBmulai.Text, CBselesai.Text, biaya, txttelp.Text, txtIDB.Text);
 
                             koneksi.Open();
                             perintah = new MySqlCommand(updateQuery, koneksi);
@@ -215,7 +218,7 @@ namespace FinalPeoject
                 {
                     if (MessageBox.Show("Anda Yakin Menghapus Data Ini ??", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        query = string.Format("Delete from lapangan2 where id_pengguna = '{0}'", txtname.Text);
+                        query = string.Format("Delete from lapangan2 where id_booking = '{0}'", txtIDB.Text);
                         ds.Clear();
                         koneksi.Open();
                         perintah = new MySqlCommand(query, koneksi);

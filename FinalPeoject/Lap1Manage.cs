@@ -31,6 +31,11 @@ namespace FinalPeoject
             koneksi = new MySqlConnection(alamat);
             InitializeComponent();
             txtIDB.Visible = false;
+            for (int hour = 8; hour <= 21; hour++)
+            {
+                CBbegin.Items.Add($"{hour}:00");
+                CBend.Items.Add($"{hour}:00");
+            }
 
         }
 
@@ -92,10 +97,10 @@ namespace FinalPeoject
         {
             try
             {
-                if (txtname.Text != "" && txttelp.Text != "" && txttanggal.Text != "" && CBmulai.Text != "" && CBselesai.Text != "")
+                if (txtname.Text != "" && txttelp.Text != "" && txttanggal.Text != "" && CBbegin.Text != "" && CBend.Text != "")
                 {
-                    int jamMulai = int.Parse(CBmulai.Text.Split(':')[0]);
-                    int jamSelesai = int.Parse(CBselesai.Text.Split(':')[0]);
+                    int jamMulai = int.Parse(CBbegin.Text.Split(':')[0]);
+                    int jamSelesai = int.Parse(CBend.Text.Split(':')[0]);
 
                     // Hitung durasi dalam jam
                     int durasi = jamSelesai - jamMulai;
@@ -106,7 +111,7 @@ namespace FinalPeoject
                         string checkBookingQuery = string.Format("SELECT COUNT(*) FROM lapangan1 WHERE tanggal = '{0}' " +
                             "AND ((jam_mulai <= '{1}' AND jam_selesai > '{1}') OR (jam_mulai < '{2}' AND jam_selesai >= '{2}') OR " +
                             "(jam_mulai >= '{1}' AND jam_selesai <= '{2}'))",
-                            txttanggal.Text, CBmulai.Text, CBselesai.Text);
+                            txttanggal.Text, CBbegin.Text, CBend.Text);
 
                         koneksi.Open();
                         perintah = new MySqlCommand(checkBookingQuery, koneksi);
@@ -124,8 +129,8 @@ namespace FinalPeoject
                             int biaya = durasi * 40000;
 
                             // Update booking di database
-                            string updateQuery = string.Format("UPDATE lapangan1 SET nama = '{0}', tanggal = '{1}', jam_mulai = '{2}', jam_selesai = '{3}', biaya = {4} WHERE no_tlp = '{5}';",
-                                                                txtname.Text, txttanggal.Text, CBmulai.Text, CBselesai.Text, biaya, txttelp.Text);
+                            string updateQuery = string.Format("UPDATE lapangan1 SET nama = '{0}', tanggal = '{1}', jam_mulai = '{2}', jam_selesai = '{3}', biaya = {4}, no_tlp = {5} WHERE id_booking = '{6}';",
+                                                                txtname.Text, txttanggal.Text, CBbegin.Text, CBend.Text, biaya, txttelp.Text, txtIDB.Text);
 
                             koneksi.Open();
                             perintah = new MySqlCommand(updateQuery, koneksi);

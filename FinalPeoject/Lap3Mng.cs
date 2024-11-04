@@ -27,6 +27,7 @@ namespace FinalPeoject
             koneksi = new MySqlConnection(alamat);
             InitializeComponent();
             txtIDB.Visible = false;
+            
             for (int hour = 8; hour <= 21; hour++)
             {
                 CBmulai.Items.Add($"{hour}:00");
@@ -80,8 +81,8 @@ namespace FinalPeoject
                             int biaya = durasi * 40000;
 
                             // Update booking di database
-                            string updateQuery = string.Format("UPDATE lapangan3 SET nama = '{0}', tanggal = '{1}', jam_mulai = '{2}', jam_selesai = '{3}', biaya = {4} WHERE no_tlp = '{5}';",
-                                                                txtname.Text, txttanggal.Text, CBmulai.Text, CBselesai.Text, biaya, txttelp.Text);
+                            string updateQuery = string.Format("UPDATE lapangan3 SET nama = '{0}', tanggal = '{1}', jam_mulai = '{2}', jam_selesai = '{3}', biaya = {4}, no_tlp = {5} WHERE id_booking = '{6}';",
+                                                                txtname.Text, txttanggal.Text, CBmulai.Text, CBselesai.Text, biaya, txttelp.Text, txtIDB.Text);
 
                             koneksi.Open();
                             perintah = new MySqlCommand(updateQuery, koneksi);
@@ -154,30 +155,28 @@ namespace FinalPeoject
         {
             try
             {
-                if (!string.IsNullOrEmpty(txtIDB.Text))
+                if (txtname.Text != "")
                 {
                     if (MessageBox.Show("Anda Yakin Menghapus Data Ini ??", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        // Gunakan parameter dalam query untuk keamanan dan menghindari SQL Injection
-                        query = "DELETE FROM lapangan3 WHERE id_booking = @id_booking";
-
+                        query = string.Format("Delete from lapangan3 where id_booking = '{0}'", txtIDB.Text);
+                        ds.Clear();
                         koneksi.Open();
                         perintah = new MySqlCommand(query, koneksi);
-                        perintah.Parameters.AddWithValue("@id_booking", txtIDB.Text);
-
+                        adapter = new MySqlDataAdapter(perintah);
                         int res = perintah.ExecuteNonQuery();
                         koneksi.Close();
-
                         if (res == 1)
                         {
                             MessageBox.Show("Delete Data Suksess ...");
-                            Lap3Mng_Load(null, null); // Refresh data
                         }
                         else
                         {
-                            MessageBox.Show("Gagal Delete data, ID Booking tidak ditemukan.");
+                            MessageBox.Show("Gagal Delete data");
                         }
                     }
+                    Lap3Mng_Load(null, null);
+                    txtname.Enabled = true;
                 }
                 else
                 {
@@ -187,13 +186,6 @@ namespace FinalPeoject
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-            }
-            finally
-            {
-                if (koneksi.State == ConnectionState.Open)
-                {
-                    koneksi.Close(); // Pastikan koneksi ditutup
-                }
             }
         }
 
@@ -232,9 +224,8 @@ namespace FinalPeoject
                     {
                         // Mengisi DataGridView dan TextBox
                         dataGridView2.DataSource = ds.Tables[0];
-
-                        // Mengambil baris pertama hasil pencarian
                         DataRow kolom = ds.Tables[0].Rows[0];
+                        txtIDB.Text = kolom["id_booking"].ToString();  // Mengisi txtIDB dengan id_booking
                         txtname.Text = kolom["nama"].ToString();
                         txttelp.Text = kolom["no_tlp"].ToString();
                         txtstatus.Text = kolom["status"].ToString();
