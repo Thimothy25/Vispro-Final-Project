@@ -176,12 +176,12 @@ namespace FinalPeoject
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            // Logika untuk klik pada picture box (jika ada)
+            
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Logika untuk klik pada konten sel (jika ada)
+           
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
