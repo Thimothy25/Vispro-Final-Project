@@ -86,22 +86,11 @@
       <DependentUpon>CrystalReport1.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="CrystalReport2.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReport2.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="CrystalReport3.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReport3.rpt</DependentUpon>
-    </Compile>
-    <Compile Include="FormBookingCR.cs">
+    <Compile Include="FORMHISTORY.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormBookingCR.Designer.cs">
-      <DependentUpon>FormBookingCR.cs</DependentUpon>
+    <Compile Include="FORMHISTORY.Designer.cs">
+      <DependentUpon>FORMHISTORY.cs</DependentUpon>
     </Compile>
     <Compile Include="Lap1Manage.cs">
       <SubType>Form</SubType>
@@ -178,16 +167,8 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport1.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="CrystalReport2.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReport2.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CrystalReport3.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReport3.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormBookingCR.resx">
-      <DependentUpon>FormBookingCR.cs</DependentUpon>
+    <EmbeddedResource Include="FORMHISTORY.resx">
+      <DependentUpon>FORMHISTORY.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lap1Manage.resx">
       <DependentUpon>Lap1Manage.cs</DependentUpon>

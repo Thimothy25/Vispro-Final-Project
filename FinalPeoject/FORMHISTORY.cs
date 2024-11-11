@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace FinalPeoject
 {
-    public partial class FormBookingCR : Form
+    public partial class FORMHISTORY : Form
     {
-        public FormBookingCR()
+        public FORMHISTORY()
         {
             InitializeComponent();
         }
 
-        private void crystalReportViewer1_Load(object sender, EventArgs e)
+        private void FORMHISTORY_Load(object sender, EventArgs e)
         {
 
         }

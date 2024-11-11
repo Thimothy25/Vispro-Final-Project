@@ -139,7 +139,7 @@ namespace FinalPeoject
 
         private void button2_Click(object sender, EventArgs e)
         {
-            FormBookingCR formBookingCR = new FormBookingCR();
+            FORMHISTORY formBookingCR = new FORMHISTORY();
             formBookingCR.Show();
         }
       
