@@ -153,6 +153,16 @@ namespace FinalPeoject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ABOUT_VISPRO {
+            get {
+                object obj = ResourceManager.GetObject("ABOUT VISPRO", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Bcord {
             get {
                 object obj = ResourceManager.GetObject("Bcord", resourceCulture);

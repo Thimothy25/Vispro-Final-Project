@@ -35,7 +35,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::FinalPeoject.Properties.Resources.about;
+            this.pictureBox1.Image = global::FinalPeoject.Properties.Resources.ABOUT_VISPRO;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(1280, 720);

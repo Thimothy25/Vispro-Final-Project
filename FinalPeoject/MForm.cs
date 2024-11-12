@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 
@@ -258,7 +259,44 @@ namespace FinalPeoject
 
         private void button3_Click(object sender, EventArgs e)
         {
-           
+            try
+            {
+                if (txtUsername.Text != "")
+                {
+                    query = string.Format("select * from tbl_pengguna where username = '{0}'", txtUsername.Text);
+                    ds.Clear();
+                    koneksi.Open();
+                    perintah = new MySqlCommand(query, koneksi);
+                    adapter = new MySqlDataAdapter(perintah);
+                    perintah.ExecuteNonQuery();
+                    adapter.Fill(ds);
+                    koneksi.Close();
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        foreach (DataRow kolom in ds.Tables[0].Rows)
+                        {
+                            txtID.Text = kolom["id_pengguna"].ToString();
+                            txtUsername.Text = kolom["username"].ToString();
+                            txtPassword.Text = kolom["password"].ToString();
+
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Data Tidak Ada !!");
+                        MForm_Load(null, null);
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Data Yang Anda Pilih Tidak Ada !!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void button2_Click_1(object sender, EventArgs e)

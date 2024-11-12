@@ -304,5 +304,8 @@
   <ItemGroup>
     <None Include="Resources\PlayPad UI.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ABOUT VISPRO.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
