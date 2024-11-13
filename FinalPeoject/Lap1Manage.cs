@@ -236,6 +236,23 @@ namespace FinalPeoject
 
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                txtname.Text = null;
+                txtstatus.Text = null;
+                txttelp.Text = null;
+                CBbegin.Text = null;
+                CBend.Text = null;
+                Lap1Manage_Load(null, null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             try

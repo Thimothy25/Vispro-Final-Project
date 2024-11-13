@@ -380,28 +380,40 @@ namespace FinalPeoject
 
         }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                txtUsername.Text = null;
+                txtPassword.Text = null;
+                MForm_Load(null, null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         private void MForm_Load(object sender, EventArgs e)
         {
             try
             {
                 koneksi.Open();
-                query = string.Format("select * from tbl_pengguna");
+                query = string.Format("select *  from tbl_pengguna");
                 perintah = new MySqlCommand(query, koneksi);
                 adapter = new MySqlDataAdapter(perintah);
+                txtID.Visible = false;
                 perintah.ExecuteNonQuery();
                 ds.Clear();
                 adapter.Fill(ds);
                 koneksi.Close();
-
-               
-                txtID.Clear();
-                txtPassword.Clear();
-                txtUsername.Clear();
-
-               
-                txtUsername.Focus();
-
-                txtID.Visible = false; 
+                dataGridView1.DataSource = ds.Tables[0];
+                dataGridView1.Columns[0].Width = 150;
+                dataGridView1.Columns[0].HeaderText = "ID Pengguna";
+                dataGridView1.Columns[1].Width = 150;
+                dataGridView1.Columns[1].HeaderText = "Nama";
+                dataGridView1.Columns[2].Width = 150;
+                dataGridView1.Columns[2].HeaderText = "Password";
             }
             catch (Exception ex)
             {

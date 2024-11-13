@@ -201,6 +201,23 @@ namespace FinalPeoject
             this.Hide();
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                txtname.Text = null;
+                txtstatus.Text = null;
+                txttelp.Text = null;
+                CBmulai.Text = null;
+                CBselesai.Text = null;
+                Lap3Mng_Load(null, null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             try

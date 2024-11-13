@@ -260,6 +260,28 @@ namespace FinalPeoject
 
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                txtname.Text = null;
+                txtstatus.Text = null;
+                txttelp.Text = null;
+                CBmulai.Text = null;
+                CBselesai.Text = null;
+                Lap2Mng_Load(null, null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void txtIDB_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
