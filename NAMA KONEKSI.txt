@@ -1,1 +1,1 @@
-nama koneksi = playpad
+Nama Source = playpad atau PlayPad
