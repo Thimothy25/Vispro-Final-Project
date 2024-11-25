@@ -1,1 +1,3 @@
-Nama Source = playpad atau PlayPad
+Nama Source:
+nama koneksi di dalam vscode => playpad
+nama koneksi di dalam ODBC => PlayPad
